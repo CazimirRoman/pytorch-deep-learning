@@ -153,6 +153,9 @@ def train_step(model: torch.nn.Module,
 
         # 5. Optimizer step
         optimizer.step()
+        
+        if(batch % 10 == 0):
+            print(f"Looked at {batch * len(X)}/{len(data_loader.dataset)} samples")
 
     # Calculate loss and accuracy per epoch and print out what's happening
     train_loss /= len(data_loader)
