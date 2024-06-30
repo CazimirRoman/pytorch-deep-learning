@@ -129,7 +129,7 @@ def train_step(model: torch.nn.Module,
                loss_fn: torch.nn.Module,
                optimizer: torch.optim.Optimizer,
                accuracy_fn,
-               device: torch.device = device):
+               device: torch.device):
     train_loss, train_acc = 0, 0
     model.to(device)
     for batch, (X, y) in enumerate(data_loader):
@@ -166,7 +166,7 @@ def test_step(data_loader: torch.utils.data.DataLoader,
               model: torch.nn.Module,
               loss_fn: torch.nn.Module,
               accuracy_fn,
-              device: torch.device = device):
+              device: torch.device):
     test_loss, test_acc = 0, 0
     model.to(device)
     model.eval() # put model in eval mode
