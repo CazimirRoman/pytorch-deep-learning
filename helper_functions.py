@@ -1,3 +1,20 @@
+import torch
+import matplotlib.pyplot as plt
+import numpy as np
+
+from torch import nn
+
+import os
+import zipfile
+
+from pathlib import Path
+
+import requests
+
+# Walk through an image classification directory and find out how many files (images)
+# are in each subdirectory.
+import os
+
 def show_image_from_loader(loader, batch_idx=0, idx=0, mean=None, std=None):
     """
     Function to display an image from a DataLoader batch.
