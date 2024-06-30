@@ -11,6 +11,8 @@ from pathlib import Path
 
 import requests
 
+from timeit import default_timer as timer
+
 # Walk through an image classification directory and find out how many files (images)
 # are in each subdirectory.
 import os
@@ -184,3 +186,18 @@ def test_step(data_loader: torch.utils.data.DataLoader,
         test_loss /= len(data_loader)
         test_acc /= len(data_loader)
         print(f"Test loss: {test_loss:.5f} | Test accuracy: {test_acc:.2f}%\n")
+
+def print_train_time(start: float, end: float, device: torch.device = None):
+    """Prints difference between start and end time.
+
+    Args:
+        start (float): Start time of computation (preferred in timeit format). 
+        end (float): End time of computation.
+        device ([type], optional): Device that compute is running on. Defaults to None.
+
+    Returns:
+        float: time between start and end in seconds (higher is longer).
+    """
+    total_time = end - start
+    print(f"Train time on {device}: {total_time:.3f} seconds")
+    return total_time
