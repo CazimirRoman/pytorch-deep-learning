@@ -77,7 +77,8 @@ def download_file(url, save_as):
 def eval_model(model: torch.nn.Module, 
                data_loader: torch.utils.data.DataLoader, 
                loss_fn: torch.nn.Module, 
-               accuracy_fn):
+               accuracy_fn,
+               device: torch.device):
     """Returns a dictionary containing the results of model predicting on data_loader.
 
     Args:
@@ -93,6 +94,7 @@ def eval_model(model: torch.nn.Module,
     model.eval()
     with torch.inference_mode():
         for X, y in data_loader:
+            X, y = X.to(device), y.to(device)
             # Make predictions with the model
             y_pred = model(X)
             
